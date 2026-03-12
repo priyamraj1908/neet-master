@@ -1,45 +1,36 @@
-export default function App() {
-  return (
-    <div style={{fontFamily:"Arial",padding:"40px"}}>
-      <h1>NEET Master 🚀</h1>
+import { useState } from "react"
+import { neetChapters } from "./chapters"
 
-      <h2>Physics</h2>
-      <ul>
-        <li>Laws of Motion</li>
-        <li>Work Energy Power</li>
-        <li>Thermodynamics</li>
-        <li>Electrostatics</li>
-      </ul>
+export default function App(){
 
-      <h2>Chemistry</h2>
-      <ul>
-        <li>Atomic Structure</li>
-        <li>Chemical Bonding</li>
-        <li>Thermodynamics</li>
-        <li>Organic Chemistry</li>
-      </ul>
+const [subject,setSubject] = useState("Physics")
 
-      <h2>Biology</h2>
-      <ul>
-        <li>Cell Structure</li>
-        <li>Human Physiology</li>
-        <li>Genetics</li>
-        <li>Ecology</li>
-      </ul>
+return (
 
-      <h2>Sample NEET PYQ</h2>
+<div style={{padding:"30px",fontFamily:"Arial"}}>
 
-      <ul>
-        <li>2023: Unit of force?</li>
-        <li>2022: Work done formula?</li>
-        <li>2021: Define momentum.</li>
-      </ul>
+<h1>NEET Master 🚀</h1>
 
-      <h2>Quick Revision</h2>
+<h2>Select Subject</h2>
 
-      <p>Force = mass × acceleration</p>
-      <p>Work = Force × displacement</p>
+<button onClick={()=>setSubject("Physics")}>Physics</button>
+<button onClick={()=>setSubject("Chemistry")}>Chemistry</button>
+<button onClick={()=>setSubject("Biology")}>Biology</button>
 
-    </div>
-  );
+<h2>{subject} Chapters</h2>
+
+<ul>
+
+{neetChapters[subject].map((chapter,i)=>(
+
+<li key={i}>{chapter}</li>
+
+))}
+
+</ul>
+
+</div>
+
+)
+
 }
